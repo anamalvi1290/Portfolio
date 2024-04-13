@@ -10,6 +10,25 @@ const showMenu = (toggleId, navId) =>{
     }
 }
 showMenu('nav-toggle','nav-menu')
+/*==================== viewport Adjustment ===================*/
+const navToggle = document.getElementById('nav-toggle');
+
+const mediaQuery = window.matchMedia('(max-width: 767px)');
+
+const toggleNavSmall = (entries) => {
+  entries.forEach((entry) => {
+    if (entry.matches) {
+      navToggle.classList.add('nav__toggle--small');
+    } else {
+      navToggle.classList.remove('nav__toggle--small');
+    }
+  });
+};
+
+mediaQuery.addListener(toggleNavSmall);
+
+// Initial check
+toggleNavSmall(mediaQuery);
 
 /*==================== REMOVE MENU MOBILE ====================*/
 const navLink = document.querySelectorAll('.nav__link')
